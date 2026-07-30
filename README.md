@@ -1,14 +1,8 @@
+<img width="1428" height="474" alt="demo" src="https://github.com/user-attachments/assets/f35cf11b-e81b-4c6f-877f-26ee0237ef0b" />
+
 # Claude Usage in Bookmarks
 
 A tiny Firefox extension that keeps your Claude.ai usage limits visible on the bookmarks toolbar. It renames one of your bookmarks once a minute, so the number is just *there* — no tab to open, no page to refresh.
-
-```
-┌───────────────────────────────────────────────┐
-│  6% · 4h 4m  7d 11%  op 5%    │ dev │ archive │
-└───────────────────────────────────────────────┘
-```
-
-Session usage and time until reset, weekly usage, weekly Opus usage. The toolbar icon also carries a colour-coded badge (green → amber → red) with the session percentage.
 
 ## Install
 
