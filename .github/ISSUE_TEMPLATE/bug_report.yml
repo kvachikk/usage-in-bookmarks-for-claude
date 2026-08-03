@@ -1,0 +1,52 @@
+name: Bug report
+description: Something does not work
+labels: [bug]
+body:
+  - type: input
+    id: firefox
+    attributes:
+      label: Firefox version
+      placeholder: '142.0 on Linux'
+    validations:
+      required: true
+
+  - type: dropdown
+    id: symptom
+    attributes:
+      label: What the bookmark shows
+      options:
+        - A dash (—)
+        - Stale numbers that never change
+        - Wrong numbers
+        - No bookmark appears at all
+        - Something else
+    validations:
+      required: true
+
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you did, what you expected, what you got.
+    validations:
+      required: true
+
+  - type: textarea
+    id: console
+    attributes:
+      label: Background console output
+      description: >
+        about:debugging → This Firefox → Inspect on this extension → Console.
+        Lines are prefixed with [usage-in-bookmarks]. Redact anything you would
+        rather not share.
+      render: text
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: signed-in
+    attributes:
+      label: Confirm
+      options:
+        - label: I am signed in to claude.ai in this same Firefox profile
+          required: true
