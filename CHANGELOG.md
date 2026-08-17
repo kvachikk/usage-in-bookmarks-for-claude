@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased][unreleased]
 
+## [1.6.0][] - 2026-08-17
+
 Support for Chrome and the other Chromium browsers, alongside Firefox. The
 extension itself behaves exactly as before in Firefox; everything below is
 about making the same source run in two browsers.
@@ -79,6 +81,8 @@ Anthropic product, and what used to be edited by hand at the top of
   the bookmark falls back to `—` rather than showing a stale number.
 
 [unreleased]:
-  https://github.com/kvachikk/usage-in-bookmarks-for-claude/compare/v1.5.0...HEAD
+  https://github.com/kvachikk/usage-in-bookmarks-for-claude/compare/v1.6.0...HEAD
+[1.6.0]:
+  https://github.com/kvachikk/usage-in-bookmarks-for-claude/releases/tag/v1.6.0
 [1.5.0]:
   https://github.com/kvachikk/usage-in-bookmarks-for-claude/releases/tag/v1.5.0
