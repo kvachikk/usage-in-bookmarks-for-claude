@@ -1,22 +1,27 @@
-'use strict';
-
 /**
  * Usage in Bookmarks for Claude
  *
  * Polls the claude.ai usage endpoint and writes the result into the title of a
  * bookmark on the bookmarks toolbar, which the extension creates and owns.
  *
- * Helpers come from lib/usage.js, loaded ahead of this file by the manifest:
- * DEFAULT_SETTINGS, PLACEHOLDER_TITLE, FALLBACK_TITLE, formatTitle,
- * normalizeSettings.
+ * Runs as a service worker in Chromium and as an event page in Firefox. Both
+ * load it as an ES module, so this one file serves both browsers: every
+ * listener below is registered at the top level, which is what lets a worker
+ * that has been shut down come back on the next alarm.
  */
 
-/* global DEFAULT_SETTINGS, PLACEHOLDER_TITLE, FALLBACK_TITLE, formatTitle,
-   normalizeSettings */
+import { browser } from './lib/browser.js';
+import { bookmarksBarId } from './lib/bookmarks-bar.js';
+import {
+  DEFAULT_SETTINGS,
+  PLACEHOLDER_TITLE,
+  FALLBACK_TITLE,
+  formatTitle,
+  normalizeSettings,
+} from './lib/usage.js';
 
 const ORIGIN = 'https://claude.ai';
 const BOOKMARK_URL = `${ORIGIN}/settings/usage`;
-const BOOKMARK_FOLDER_ID = 'toolbar_____'; // Firefox's Bookmarks Toolbar
 const ALARM_NAME = 'poll';
 
 const BADGE_ERROR = '#7f8c8d';
@@ -85,7 +90,7 @@ const ensureBookmark = async () => {
   }
 
   const created = await browser.bookmarks.create({
-    parentId: BOOKMARK_FOLDER_ID,
+    parentId: await bookmarksBarId(),
     title: PLACEHOLDER_TITLE,
     url: BOOKMARK_URL,
   });
@@ -134,7 +139,7 @@ const refresh = async () => {
   }
 };
 
-/** (Re)arms the poll timer. Firefox clamps periods below one minute. */
+/** (Re)arms the poll timer. Browsers clamp periods below one minute. */
 const scheduleAlarm = async () => {
   const { intervalMinutes } = await readSettings();
   await browser.alarms.clear(ALARM_NAME);
