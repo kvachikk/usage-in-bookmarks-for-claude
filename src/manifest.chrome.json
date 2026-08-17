@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Usage in Bookmarks for Claude",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "description": "Keeps your Claude.ai usage limits on the bookmarks bar, refreshed in the background. Not affiliated with Anthropic.",
   "homepage_url": "https://github.com/kvachikk/usage-in-bookmarks-for-claude",
 
