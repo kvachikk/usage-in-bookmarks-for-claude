@@ -1,10 +1,8 @@
-'use strict';
-
 /**
  * Pure helpers shared by the background script and the options page.
  *
- * This file is a classic script in the browser and a CommonJS module under
- * `node --test`, which is what the export tail at the bottom is for.
+ * Plain ES module: the same file is imported by the background script, by the
+ * options page and by `node --test`, with no build step in between.
  */
 
 /**
@@ -12,7 +10,7 @@
  * page lists them. `label` is the prefix shown in the bookmark title; the
  * session window carries no prefix because it is the number people mean.
  */
-const METRICS = [
+export const METRICS = [
   { key: 'five_hour', label: '', name: 'Current session (5 hours)' },
   { key: 'seven_day', label: '7d', name: 'All models (7 days)' },
   { key: 'seven_day_opus', label: 'op', name: 'Opus (7 days)' },
@@ -25,7 +23,7 @@ const METRICS = [
   { key: 'seven_day_cowork', label: 'cw', name: 'Cowork (7 days)' },
 ];
 
-const DEFAULT_SETTINGS = {
+export const DEFAULT_SETTINGS = {
   intervalMinutes: 1,
   metrics: ['five_hour', 'seven_day', 'seven_day_opus'],
   showReset: true,
@@ -33,16 +31,16 @@ const DEFAULT_SETTINGS = {
 };
 
 /** Title before the first successful poll. */
-const PLACEHOLDER_TITLE = 'Claude usage';
+export const PLACEHOLDER_TITLE = 'Claude usage';
 
 /** Title after a failed poll, so a stale number is never left on screen. */
-const FALLBACK_TITLE = '—';
+export const FALLBACK_TITLE = '—';
 
 const MINUTE = 60000;
 const HOUR = 3600000;
 
 /** Renders the time until `iso` as `2h 5m`, or `12m` under an hour. */
-const timeLeft = (iso, now = Date.now()) => {
+export const timeLeft = (iso, now = Date.now()) => {
   if (!iso) return FALLBACK_TITLE;
   const remaining = new Date(iso).getTime() - now;
   if (!Number.isFinite(remaining) || remaining <= 0) return '0m';
@@ -61,7 +59,11 @@ const labelFor = (key) => {
  * does not have are skipped rather than rendered as zero, so a Pro account
  * does not advertise limits that do not apply to it.
  */
-const formatTitle = (usage, settings = DEFAULT_SETTINGS, now = Date.now()) => {
+export const formatTitle = (
+  usage,
+  settings = DEFAULT_SETTINGS,
+  now = Date.now(),
+) => {
   const parts = [];
   for (const key of settings.metrics) {
     const metric = usage?.[key];
@@ -85,7 +87,7 @@ const clampInt = (value, min, max, fallback) => {
 };
 
 /** Drops unknown keys and out-of-range values read back out of storage. */
-const normalizeSettings = (stored) => {
+export const normalizeSettings = (stored) => {
   const source = stored && typeof stored === 'object' ? stored : {};
   const known = new Set(METRICS.map((entry) => entry.key));
   const metrics = Array.isArray(source.metrics)
@@ -106,15 +108,3 @@ const normalizeSettings = (stored) => {
     separator: DEFAULT_SETTINGS.separator,
   };
 };
-
-if (typeof module === 'object' && module.exports) {
-  module.exports = {
-    METRICS,
-    DEFAULT_SETTINGS,
-    PLACEHOLDER_TITLE,
-    FALLBACK_TITLE,
-    timeLeft,
-    formatTitle,
-    normalizeSettings,
-  };
-}

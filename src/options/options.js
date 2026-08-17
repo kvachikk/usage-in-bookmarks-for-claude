@@ -1,6 +1,10 @@
-'use strict';
-
-/* global METRICS, DEFAULT_SETTINGS, formatTitle, normalizeSettings */
+import { browser } from '../lib/browser.js';
+import {
+  METRICS,
+  DEFAULT_SETTINGS,
+  formatTitle,
+  normalizeSettings,
+} from '../lib/usage.js';
 
 /** Stand-in response used only to render the preview. */
 const SAMPLE_USAGE = {

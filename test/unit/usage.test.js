@@ -1,15 +1,13 @@
-'use strict';
+import test from 'node:test';
+import assert from 'node:assert/strict';
 
-const test = require('node:test');
-const assert = require('node:assert/strict');
-
-const {
+import {
   DEFAULT_SETTINGS,
   FALLBACK_TITLE,
   timeLeft,
   formatTitle,
   normalizeSettings,
-} = require('../../src/lib/usage.js');
+} from '../../src/lib/usage.js';
 
 const NOW = Date.parse('2026-08-03T12:00:00Z');
 const at = (minutes) => new Date(NOW + minutes * 60000).toISOString();
