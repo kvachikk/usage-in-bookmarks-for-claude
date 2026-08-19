@@ -1,6 +1,7 @@
 <img width="1428" height="474" alt="demo" src="https://github.com/user-attachments/assets/f35cf11b-e81b-4c6f-877f-26ee0237ef0b" />
 
 ### **Chrome (& Chromium)** — [Chrome Web Store](https://chromewebstore.google.com/detail/usage-in-bookmarks-for-cl/fiphdimjfgmfopgplaelbnlaclpfkgpj)
+
 ### **Firefox (& Gecko)** — [addons.mozilla.org](https://addons.mozilla.org/firefox/addon/usage-in-bookmarks-for-claude/)
 
 ---
