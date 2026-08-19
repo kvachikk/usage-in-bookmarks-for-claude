@@ -1,21 +1,9 @@
 <img width="1428" height="474" alt="demo" src="https://github.com/user-attachments/assets/f35cf11b-e81b-4c6f-877f-26ee0237ef0b" />
 
-# Usage in Bookmarks for Claude
+### **Chrome (& Chromium)** — [Chrome Web Store](https://chromewebstore.google.com/detail/usage-in-bookmarks-for-cl/fiphdimjfgmfopgplaelbnlaclpfkgpj)
+### **Firefox (& Gecko)** — [addons.mozilla.org](https://addons.mozilla.org/firefox/addon/usage-in-bookmarks-for-claude/)
 
-A tiny browser extension that keeps your Claude.ai usage limits visible on the
-bookmarks bar. It renames a bookmark it owns once a minute, so the number is
-just _there_ — no tab to open, no page to refresh.
-
-Runs on Chrome, Edge, Brave and the other Chromium browsers, and on Firefox.
-
-Not affiliated with, endorsed by, or sponsored by Anthropic.
-
-## Install
-
-- **Chrome and other Chromium browsers** — _(Chrome Web Store link goes here
-  once the listing is live.)_
-- **Firefox** —
-  [addons.mozilla.org](https://addons.mozilla.org/firefox/addon/usage-in-bookmarks-for-claude/)
+---
 
 Or build it yourself:
 
